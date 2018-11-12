@@ -1,0 +1,91 @@
+
+body {
+	
+	.cardInfo {
+		position: absolute;
+		background-color: #EFEFEF;
+		width: 400px;
+		height: 400px;
+		z-index: 9999;
+		// center the element
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+    	right: 0px;
+    	margin: auto;
+	}
+
+}
+
+
+#main {
+
+
+	#cards {
+
+		.card {
+
+			transition: 1s;
+			//transition-timing-function: ease-out;
+			// -webkit-font-smoothing: subpixel-antialiased
+			@include transform-style;
+			//position: relative;
+			min-width: 50px;
+
+			.front, .back {
+				@include backface-visibility;
+				@include transform-style;
+				//position: relative;
+			}
+
+			.front {
+				//background: #666000;
+			}
+
+			.back {
+				@include rotateY(180deg);
+				background: #EEEEEE;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				@include border-radius;
+				@include box-shadow;
+				.text {
+					position: relative;
+					padding-left: 1px;
+					font-family: verdana;
+					font-size: 10px;
+					width: 100%;
+					text-align: center;
+					word-wrap: break-word;
+					@include hyphens;
+					@include at-breakpoint($phablet-min-width) {
+						font-size: 10px;
+					}
+					@include at-breakpoint($tablet-min-width) {
+						font-size: 14px;
+					}
+				}
+
+				.info {
+					visibility: hidden;
+					@extend .circle;
+					border: 2px white solid;
+					background: blue;
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					width: 20px;
+					height: 20px;
+					line-height: 20px;
+					text-align: center;
+					family-font: verdana;
+					//font-sise: 28px !important;
+					color: white;
+				}
+			}
+
+		} // end of .card
+
+	}
+}

@@ -1,0 +1,105 @@
+
+$font-family: theme-3;
+
+#menu {
+	position: absolute;
+	z-index: 999;
+	width: 300px;
+	left: 20px;
+	top: -30px;
+	display: inline-block;
+	box-shadow: inset 0px 0px 5px 5px #CCCCCC;
+	padding: 30px;
+	margin: 20px 40px;
+	@include at-breakpoint($phablet-min-width) {
+		width: 330px;
+		left: 20px;
+		top: 20px;
+	}
+	@include at-breakpoint($tablet-min-width) {
+		width: auto;
+	}
+
+	.menu-select-area {
+		background-color: rgba(#999999, 0.70);
+		display: inline-block;
+		font-size: 12px;
+		padding: 10px;
+		//font-family: verdana, helvetica;
+		font-family: $font-family;
+		margin-bottom: 30px;
+		margin-right: 30px;
+		&:nth-child(3), &:nth-child(4) {
+			margin-bottom: 0px;
+		}
+		&:nth-child(2), &:nth-child(4) {
+			margin-right: 0px;
+		}
+
+		@include border-radius;
+		@include box-shadow;
+
+		@include at-breakpoint($tablet-min-width) {
+			margin-right: 30px;
+			margin-bottom: 0px;
+			&:last-child {
+				margin-right: 0px;
+			}
+			&:nth-child(2) {
+				margin-right: 30px;
+			}
+		}
+
+		.menu-select-title {
+			display: none;
+			font-size: 12px;
+			padding-left: 1px;
+			padding-bottom: 10px;
+			@include at-breakpoint($phablet-min-width) {
+				display: block;
+				font-size: 14px;
+			}
+			@include at-breakpoint($tablet-min-width) {
+				font-size: 16px;
+			}
+		}
+
+		.menu-select {
+			font-size: 12px;
+			font-family: $font-family;
+			@include at-breakpoint($phablet-min-width) {
+				font-size: 14px;
+			}
+			@include at-breakpoint($tablet-min-width) {
+				font-size: 16px;
+			}
+		}
+	}
+
+}
+
+
+#menu-button
+{
+	position: absolute;
+	left: 15px;
+	top: 22px;
+	width: 20px;
+	@include at-breakpoint($tablet-min-width) {
+		left: 25px;
+		top: 30px;
+		width: 30px;
+	}
+
+	.menu-line {
+	    height: 4px;
+	    background-color: #ffffee;
+	    border-radius: 4px;
+	    margin-bottom: 5px;
+		@include at-breakpoint($tablet-min-width) {
+		    height: 6px;
+		}
+	}
+}
+
+

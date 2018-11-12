@@ -1,0 +1,93 @@
+
+.shape {
+	position: absolute;
+	z-index: 990;
+	@include box-shadow(#FFFFFF);
+}
+
+.circle {
+	border-radius: 50%;
+}
+
+.bubble {
+	@extend .shape;
+	@extend .circle;
+}
+
+.popup-number {
+	@extend .bubble;
+	border-radius: 25%;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	left: 10px;
+	top: 60px;
+	text-align: center;
+	font-family: verdana;
+	font-size: 14px;
+	color: #333333;
+	background-color: rgba(#666666, 0.5);
+	@include at-breakpoint($phablet-min-width) {
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+	}
+	@include at-breakpoint($tablet-min-width) {
+		left: 20px;
+	}
+}
+
+
+$starColor: #DAC361;
+
+.star-five { 
+	position: absolute; 
+	left:150px; 
+	top:150px; 
+	color: $starColor; 
+	width: 0px; 
+	height: 0px; 
+	border-right: 100px solid transparent; 
+	border-bottom: 70px solid $starColor; 
+	border-left: 100px solid transparent;
+	-moz-transform: rotate(35deg); 
+	-webkit-transform: rotate(35deg); 
+	-ms-transform: rotate(35deg); 
+	-o-transform: rotate(35deg);
+} 
+
+.star-five:before { 
+	border-bottom: 80px solid $starColor; 
+	border-left: 30px solid transparent; 
+	border-right: 30px solid transparent; 
+	position: absolute; 
+	height: 0; 
+	width: 0; 
+	top: -45px; 
+	left: -65px; 
+	display: block; 
+	content: ''; 
+	-webkit-transform: rotate(-35deg); 
+	-moz-transform: rotate(-35deg); 
+	-ms-transform: rotate(-35deg); 
+	-o-transform: rotate(-35deg); 
+} 
+
+.star-five:after {
+	position: absolute; 
+	display: block; 
+	color: $starColor; 
+	top: 3px; 
+	left: -105px; 
+	width: 0px; 
+	height: 0px; 
+	border-right: 100px solid transparent; 
+	border-bottom: 70px solid $starColor; 
+	border-left: 100px solid transparent; 
+	-webkit-transform: rotate(-70deg); 
+	-moz-transform: rotate(-70deg); 
+	-ms-transform: rotate(-70deg); 
+	-o-transform: rotate(-70deg); 
+	content: '';
+}
+

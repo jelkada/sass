@@ -1,0 +1,269 @@
+
+// compass watch [path/to/project]
+// compass watch /Users/x163661/Documents/Jimmy/iMatch-English
+
+@import "compass/reset";
+@import "susy";
+
+
+// container min and max widths
+//$min-container-width: 480px;
+//$max-container-width: 1200px;
+
+$total-columns: 12;
+$column-width: 100px;
+$gutter-width: 20px;
+$grid-padding: 0px;
+
+
+$phone-min-width: 480px;
+$phone-max-width: 639px;
+$phablet-min-width: 640px;
+$phablet-max-width: 767px;
+$tablet-min-width: 768px;
+$tablet-max-width: 1024px;
+$desktop-min-width: 1025px;
+$desktop-max-width: 1280px;
+
+
+
+//$tablet-columns: 10;
+//$desktop-columns: 12;
+
+
+$prefixes: -webkit-, -moz-, -ms-, -o-, "";
+$duration: 1s;
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin transition($transition-property, $transition-time:$duration, $timing-function:ease-in-out) {
+	-webkit-transition: $transition-property $transition-time $timing-function;
+	-moz-transition   : $transition-property $transition-time $timing-function;
+	-ms-transition    : $transition-property $transition-time $timing-function;
+	-o-transition     : $transition-property $transition-time $timing-function;
+	transition        : $transition-property $transition-time $timing-function;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin animation($name, $duration:1s, $timing-function:ease-in-out){
+    @each $prefix in $prefixes{
+        #{$prefix}animation: $name $duration $timing-function;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin rotateY($angle){
+    @each $prefix in $prefixes{
+        #{$prefix}transform: rotateY($angle);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin transition-transform($transition-time:$duration, $timing-function:ease-in-out){
+    @each $prefix in $prefixes{
+        #{$prefix}transition: #{$prefix}transform $transition-time $timing-function;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin transform-style ($style:preserve-3d) {
+    @each $prefix in $prefixes{
+        #{$prefix}transform-style: $style;
+    }
+}
+
+@mixin perspective ($style:1000) {
+    @each $prefix in $prefixes{
+        #{$prefix}perspective: $style;
+    }
+}
+
+@mixin backface-visibility ($style:hidden) {
+    @each $prefix in $prefixes{
+        #{$prefix}backface-visibility: $style;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin hyphens () {
+    @each $prefix in $prefixes {
+        #{$prefix}hyphens: auto;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin border-radius ($border:0px, $radius:10px) {
+    @each $prefix in $prefixes{
+        #{$prefix}border: $border #333333 solid;
+        #{$prefix}border-radius: $radius;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+
+@mixin box-shadow ($color:#333333) {
+    @each $prefix in $prefixes {
+        #{$prefix}box-shadow: 3px 3px 6px 2px $color;
+    }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
+@import "menu";
+@import "effect";
+@import "font";
+@import "card";
+
+
+body {
+	//background-image: url("../img/themes/theme-3/bg.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	//background-color: #000000;
+	// disable scrolling
+	overflow: hidden;
+}
+
+
+#blocker {
+	background-color: #000000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	&.transparency {
+		opacity: 0.8;
+	}
+	&.clear {
+		opacity: 0;
+	}
+}
+
+.popup-message {
+	position: absolute;
+	z-index: 990;
+	border-radius: 25px;
+	top: 20px;
+	left: 70px;
+	font-family: verdana;
+	font-size: 14px;
+	padding: 20px;
+	background-color: #DBE3C2;
+	@include box-shadow(#333333);
+}
+
+
+#main {
+
+	min-width: 420px;
+
+	@include container();
+    //@include susy-grid-background;
+
+	#cards {
+		@include span-columns(10, $total-columns);
+		//background-color: rgba(#660000, 0.5);
+		//position: relative;
+
+		
+		@include at-breakpoint($phone-min-width) {
+		    //background-color: rgba(#FFFFFF, 1);
+		}
+		@include at-breakpoint($phablet-min-width) {
+		    //background-color: rgba(#990000, 1);
+		}
+		@include at-breakpoint($tablet-min-width) {
+		    //background-color: rgba(#999999, 1);
+		}
+		@include at-breakpoint($desktop-min-width) {
+		    //background-color: rgba(#EEEEEE, 1);
+		}
+
+		.card-row {
+			@include span-columns(12, $total-columns);
+			padding-bottom: 8px;
+			padding-left: 20px;
+			&:last-child { padding-bottom: 0px; }
+			position: relative;
+			//background-color: rgba(#DDDDDD, 0.4);
+			@include at-breakpoint($phablet-min-width) {
+				padding-bottom: 20px;
+			}
+
+			.img-card {
+				width: 100%;
+				height: auto;
+				max-width: 44px;
+
+				@include at-breakpoint($phablet-min-width) {
+				    //background-color: rgba(#990000, 1);
+				    max-width: 70px;
+				}
+				@include at-breakpoint($tablet-min-width) {
+				    //background-color: rgba(#999999, 1);
+				    max-width: 100px;
+				}
+				@include at-breakpoint($desktop-min-width) {
+				    //background-color: rgba(#EEEEEE, 1);
+				    max-width: 100px;
+				}
+				@include border-radius;
+				@include box-shadow;
+			}
+
+			.row-4-cards {
+				@include span-columns(2, 8);
+				//background-color: rgba(#990000, 0.85);
+				&:nth-child(4n) {
+					@include span-columns(2 omega, 8);
+				}
+			}
+			
+			.row-5-cards {
+				@include span-columns(2, 10);
+				//background-color: rgba(#990000, 0.5);
+				&:nth-child(5n) {
+					@include span-columns(2 omega, 10);
+				}
+			}
+
+			.row-6-cards {
+				@include span-columns(2, 12);
+				//background-color: rgba(#990000, 0.4);
+				&:nth-child(6n) {
+					@include span-columns(2 omega, 12);
+				}
+			}
+			
+
+			.flip {
+				@include rotateY(180deg);
+			}
+
+		} // end of .card-row		
+
+	} // end of #cards
+	
+
+	#main-left {
+		@include span-columns(1, $total-columns);
+		visibility: hidden;
+		//background-color: rgba(#999999, 0.75);
+	}
+
+	#main-right {
+		@include span-columns(1 omega, $total-columns);
+		visibility: hidden;
+		//background-color: rgba(#999999, 0.75);
+	}
+	
+}
